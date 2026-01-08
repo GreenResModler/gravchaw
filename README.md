@@ -1,7 +1,8 @@
 
 ## GravCHAW
 
-**What is GravCHAW?**
+What is GravCHAW?
+----------------
 
 GravCHAW is a Python software to assimilate time-lapse gravity in numerical groundwater models. It integrates newly developed time-lapse gravity data simulation module to FloPy (Langevin et al., 2017), forming coupled hydrogravimetric model.
 The coupled model is integrated with pyEMU (White et al., 2016).
