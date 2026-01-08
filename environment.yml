@@ -1,0 +1,13 @@
+name: tlg-gw-assim
+channels:
+  - conda-forge
+dependencies:
+  - python>=3.11
+  - flopy
+  - pyemu
+  - notebook
+  - numpy
+  - pandas
+  - pip
+  - pip:
+      - ./gravchaw
