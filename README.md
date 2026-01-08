@@ -1,5 +1,5 @@
 
-## <strong>What does it do?</strong>
+## GravCHAW
 
 What is GravCHAW?
 ----------------
