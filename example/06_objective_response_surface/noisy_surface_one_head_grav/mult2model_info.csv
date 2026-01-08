@@ -1,3 +1,0 @@
-,org_file,model_file,use_cols,index_cols,fmt,sep,head_rows,upper_bound,lower_bound,operator,zone_file,apply_order,zero_based
-0,org\downsc_freyberg.npf_k.txt,downsc_freyberg.npf_k.txt,,,%10.8F,,0,1e+30,-1e+30,d,downsc_freyberg.npf_k.txt.zone,999,False
-1,org\downsc_freyberg.sto_sy.txt,downsc_freyberg.sto_sy.txt,,,%10.8F,,0,1e+30,-1e+30,d,downsc_freyberg.sto_sy.txt.zone,999,False
