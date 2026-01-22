@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gravchaw"
 authors = [
-     {name = "Nazanin Mohammadi", email = "nazanin.mohammadi@unine.ch; mohammadi.naz92@gmail.com"},
+     {name = "Nazanin Mohammadi", email = "nazanin.mohammadi@unine.ch"},
 	 {name = "Hamzeh Mohammadigheymasi", email = "hmohammadigheymasi@fas.harvard.edu"},
 	 {name = "Landon J.S. Halloran", email = "landon.halloran@unine.ch"}
 	 
@@ -28,3 +28,4 @@ dependencies = [
     "numpy",
     "pandas"
 ]
+
