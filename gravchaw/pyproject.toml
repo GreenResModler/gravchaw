@@ -7,7 +7,7 @@ build-backend = "setuptools.build_meta"
 [project]
 name = "gravchaw"
 description = "An open-source python framework to quantitatively explore the full potential of time-lapse gravity in reducing hydrogeological data gap."
-version = "0.1.0d"
+version = "0.1.0"
 readme = "README.md"
 license = { text = "MIT" }
 classifiers = [
