@@ -2,7 +2,7 @@
 
 ## What is GravCHAW?
 
-GravCHAW is an open-source Python software for the assimilation of time-lapse gravity (TLG) data into numerical groundwater models. This tool enables quantitative exploration of the full potential of TLG in reducing hydrogeological data gaps.It incorporates a site-independent coupled hydrogravimetric model that links FloPy, a Python interface for MODFLOW 
+GravCHAW is an open-source Python software for the assimilation of time-lapse gravity (TLG) data into numerical groundwater models. This tool enables quantitative exploration of the full potential of TLG in reducing hydrogeological data gaps. It incorporates a site-independent coupled hydrogravimetric model that links FloPy, a Python interface for MODFLOW 
 ([Bakker et al., 2016](https://doi.org/10.1111/gwat.12413); [Hughes et al., 2024](https://doi.org/10.1111/gwat.13327)), to Gravi4GW-hybrid, a newly developed Python module for simulating TLG data. The coupled model is further integrated with pyEMU ([White et al., 2016](https://doi.org/10.1016/j.envsoft.2016.08.017)), a Python interface for the PEST++ software suite.
 
 
