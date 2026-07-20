@@ -35,7 +35,7 @@ Mohammadi, Nazanin, Hamzeh Mohammadigheymasi, and Landon JS Halloran. "GravCHAW:
 
 ## How to use it?
 
-Activate the created environmnet by running "conda activate software_paper" (or if you used a custom name "conda activate your_desired_env_name").
+Activate the created environmnet by running "conda activate tlg-gw-assim" (or if you used a custom name "conda activate your_desired_env_name").
 
 Jupyter notebooks in the repository guide you how to use the framework. To start Jupyter Notebook, make sure you are in the unziped folder directory in your terminal, then run "jupyter notebook".
 
