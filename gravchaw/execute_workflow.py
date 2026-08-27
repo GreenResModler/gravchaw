@@ -41,7 +41,7 @@ def write_script(file_name,
 import os
 from pathlib import Path
 import pyemu
-
+import re
 def script_to_opt_post_opt(working_direct, pst_file):
 
     pst_path = os.path.join(working_direct, f"{{pst_file}}.pst")
@@ -50,6 +50,23 @@ def script_to_opt_post_opt(working_direct, pst_file):
     par_file = os.path.join(working_direct, f"{{pst_file}}.par")
     pst.parrep(par_file)
     pst.write_input_files(pst_path=working_direct)
+    fold_path = Path(working_direct)
+    geos_dat =[]
+    geos_fac =[]
+    for _f in fold_path.iterdir():
+        if _f.is_file() and _f.suffix=='.dat' and not _f.name.endswith('var.dat'):
+            geos_dat.append(_f.name)
+        if _f.is_file() and _f.suffix=='.fac': 
+            geos_fac.append(_f.name)      
+    if geos_dat and geos_fac:
+        for _dat_file in geos_dat:
+            _fac_file= next((b for b in geos_fac if _dat_file.split('.')[0]==b.split('.')[0]), None)
+            if _fac_file is None:
+                inst = re.search(r'inst\d+pp', _dat_file).group()
+                _fac_file = next(b for b in geos_fac if inst in b)
+            pyemu.geostats.fac2real(os.path.join(working_direct,_dat_file),
+                                    os.path.join(working_direct,_fac_file))
+    
     pyemu.os_utils.run('python forward_run.py', cwd=working_direct)
 
 def main():

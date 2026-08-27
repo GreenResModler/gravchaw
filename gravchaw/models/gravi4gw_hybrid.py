@@ -1,5 +1,6 @@
 """
 This module uses a hybrid approach to calculate TLG data. 
+ A robust numerical evaluation is implemented for handling singularities in prism cells following doi: 10.1093/gji/ggy317.
 
 """
 
@@ -303,6 +304,15 @@ def g_point_mass(R_cen,
     dgpoZ = -dgpoZ
     
     return dgpoZ
+    
+def logsum(a, b, c, R, omega=1E-150):
+    
+    log_arr = np.zeros_like(a, dtype=float)
+    log_arr[a>0] = np.log(R[a>0] + a[a>0])
+    log_arr[a==0] = 0.5*(np.log((b[a==0])**2+(c[a==0])**2+omega))
+    log_arr[a<0] = np.log(((b[a<0])**2+(c[a<0])**2+omega)/(R[a<0]-a[a<0]))
+    
+    return log_arr
 
 def g_cell(x_diff,
            y_diff,
@@ -339,14 +349,15 @@ def g_cell(x_diff,
                 dx = x_diff[:,i-1]
                 dy = y_diff[:,j-1]
                 dz = z_diff[:,k-1] 
-                dz[dz>-1E-06] = -1E-06  # to avoid singularity
                 R = np.sqrt(dx**2+dy**2+dz**2)
-                t = (dx*dy)/(dz*R)
-                L1 = R+dx
-                L2 = R+dy
-                x_term = dx*np.log(L2)
-                y_term = dy*np.log(L1)
-                z_term = dz*np.arctan(t)
+                L1 = logsum(dx, dy, dz, R)
+                L2 = logsum(dy, dx, dz, R)
+                x_term = dx*L2
+                y_term = dy*L1
+                z_term = np.zeros_like(dz, dtype=float) 
+                nonzero_z = dz != 0.0
+                t = (dx[nonzero_z]*dy[nonzero_z])/(dz[nonzero_z]*R[nonzero_z])
+                z_term[nonzero_z] = dz[nonzero_z]*np.arctan(t)
                 sum = sum + mu*(z_term-x_term-y_term)*cell_pors
                 dgprZ = -sum
                 
@@ -423,7 +434,6 @@ def tlg_hybrid(modelgrid,
         dx_cen = head['x_head'] - obs['x_obs'][n]
         dy_cen = head['y_head'] - obs['y_obs'][n]
         dz_cen = z_cen - obs['z_obs'][n]    
-        dz_cen[dz_cen>-1E-06] = -1E-06 # to avoid singularity
         R_cen = np.sqrt(dx_cen**2+dy_cen**2+dz_cen**2)
         f2 = (R_cen**2)/Del_P2
         # Decide the method  
