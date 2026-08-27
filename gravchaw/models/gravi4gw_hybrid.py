@@ -305,7 +305,7 @@ def g_point_mass(R_cen,
     
     return dgpoZ
     
-    def logsum(a, b, c, R, omega=1E-150):
+def logsum(a, b, c, R, omega=1E-150):
     
     log_arr = np.zeros_like(a, dtype=float)
     log_arr[a>0] = np.log(R[a>0] + a[a>0])
